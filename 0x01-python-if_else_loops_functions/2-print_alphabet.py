@@ -2,4 +2,4 @@
 for i in range(97, 123):
     Ascii = chr(i)
     asc = "" + Ascii
-    print(f"{asc}", end='')
+    print("{}".format(asc), end='')
