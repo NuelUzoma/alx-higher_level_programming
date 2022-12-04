@@ -11,4 +11,4 @@ if __name__ == "__main__":
     elif leng == 4:
         print(f"3 arguments:\n1: {a[1]}\n2: {a[2]}\n3: {a[3]}")
     elif leng == 5:
-        print(f"4 arguments:\n1:{a[1]}\n2:{a[2]}\n3:{a[3]}\n4:{a[4]}")
+        print(f"4 arguments:\n1: {a[1]}\n2: {a[2]}\n3: {a[3]}\n4: {a[4]}")
