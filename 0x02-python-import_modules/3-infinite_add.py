@@ -12,3 +12,5 @@ if __name__ == "__main__":
         print(int(a[1]) + int(a[2]) + int(a[3]))
     elif leg == 5:
         print(int(a[1]) + int(a[2]) + int(a[3]) + int(a[4]))
+    elif leg == 7:
+        print(int(a[1]) + int(a[2]) + int(a[3]) + int(a[4])+int(a[5])+int(a[6]))
