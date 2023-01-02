@@ -19,7 +19,7 @@ class Rectangle:
             return (0)
         else:
             return 2 * (self._Rectangle__height + self._Rectangle__width)
-    
+
     @property
     def height(self):
         """The height instance getter"""
