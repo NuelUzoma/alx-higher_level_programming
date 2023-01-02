@@ -3,6 +3,7 @@
 
 
 class Square:
+    """A class that contains values for a square and compute the area"""
 
     def __init__(self, _Square__size=0):
         """This contains the conditional statements"""
