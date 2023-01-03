@@ -28,7 +28,8 @@ class Rectangle:
         """The __str__ instance"""
         if (self._Rectangle__height == 0 or self._Rectangle__width == 0):
             return ''
-        return '\n'.join([self.print_symbol * self._Rectangle__width] * self._Rectangle__height)
+        return '\n'.join([self.print_symbol * self._Rectangle__width]\
+                * self._Rectangle__height)
 
     def __repr__(self):
         """The __repr__ instance"""
