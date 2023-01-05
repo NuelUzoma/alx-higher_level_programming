@@ -13,9 +13,9 @@ all from the ``0-add_integer`` module
 98
 >>> add_integer(2)
 100
->>> add_integer(3, 6)
+>>> add_integer(3, 6.1)
 9
->>> add_integer(100, -2)
+>>> add_integer(100.1, -2)
 98
 >>> add_integer("b", 8)
 Traceback (most recent call last):
