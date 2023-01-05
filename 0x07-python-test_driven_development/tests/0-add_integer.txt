@@ -9,12 +9,12 @@ all from the ``0-add_integer`` module
 >>> add_integer = __import__('0-add_integer').add_integer
 >>> add_integer(1, 2)
 3
->>> add_integer(5.1, 6)
+>>> add_integer(5, 6)
 11
->>> add_integer(80, 9)
-89
->>> add_integer(100, -2)
-98
+>>> add_integer(8, 9)
+17
+>>> add_integer(100)
+198
 >>> add_integer(2)
 100
 >>> add_integer(100.3, -2)
