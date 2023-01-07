@@ -1,0 +1,3 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("""I am not giving up on this ALX Program. \ """)
+I am not giving up on this ALX Program.
