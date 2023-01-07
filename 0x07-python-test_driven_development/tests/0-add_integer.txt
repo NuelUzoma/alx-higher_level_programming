@@ -13,7 +13,7 @@ all from the ``0-add_integer`` module
 98
 >>> add_integer(2)
 100
->>> add_integer(3, 6.1)
+>>> add_integer(3.2, 6)
 9
 >>> add_integer(100.1, -2)
 98
