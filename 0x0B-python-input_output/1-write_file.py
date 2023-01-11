@@ -5,5 +5,6 @@
 
 def write_file(filename="", text=""):
     """The function prototype"""
-    with open('my_first_file.txt', 'w', encoding="utf-8") as f:
-        return f.write(text)
+    with open("my_first_file.txt", "w", encoding="utf-8") as f:
+        f.write(text)
+        return len(text)

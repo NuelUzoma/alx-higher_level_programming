@@ -4,5 +4,6 @@
 
 def read_file(filename=""):
     """The function prototype"""
-    with open("my_file_0.txt", "r") as f:
-        print(f.read(), end="")
+    with open("my_file_0.txt", "r", encoding="utf-8") as f:
+        for line in f:
+            print(line, end='')
