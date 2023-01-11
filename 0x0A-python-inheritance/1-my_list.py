@@ -15,7 +15,7 @@ class list:
 
     def append(self, int):
         pass
-    
+
 class MyList(list):
     """The MyList inherits from the parent class list """
     def __init__(self):
@@ -24,6 +24,6 @@ class MyList(list):
 
     def print_sorted(self):
         """Prints the list in a sorted order"""
-        return set(int)
-
-
+        data = []
+        dat = set(data)
+        return dat
