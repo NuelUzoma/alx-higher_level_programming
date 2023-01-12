@@ -5,7 +5,4 @@
 
 def is_same_class(obj, a_class):
     """The function prototype that returns a boolean"""
-    if isinstance(obj, a_class):
-        return True
-    else:
-        return False
+    return type(obj) is a_class
