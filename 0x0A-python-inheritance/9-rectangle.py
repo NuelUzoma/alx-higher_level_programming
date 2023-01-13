@@ -21,6 +21,7 @@ class BaseGeometry:
         elif (value <= 0):
             raise ValueError(f"{name} must be greater than 0")
 
+
 class Rectangle(BaseGeometry):
     """The class Rectangle which defines a Rectangle"""
     def __init__(self, width, height):
