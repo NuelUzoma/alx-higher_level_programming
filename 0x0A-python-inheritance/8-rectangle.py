@@ -30,20 +30,9 @@ class BaseGeometry:
 
 class Rectangle(BaseGeometry):
     """A class that inherits from BaseGeometry"""
-    def __init__(self):
-        """Initialization"""
-        super().__init__(self)
-    
     def __init__(self, width, height):
         """The init of the width and height"""
-        self.width = width
-        self.height = height
-
-    def integer_validator(self, width, height):
-        """The integer validator of the class"""
-        self.width = width
-        self.height = height
-        if not isinstance((width, height), int):
-            raise TypeError(f"{name} must be an integer")
-        elif (width <= 0) or (height <= 0):
-            raise ValueError(f"{name} must be greater than 0")
+        self.__width = width
+        self.__height = height
+        super().integer_validator("width", self.__width)
+        super().integer_validator("height", self.__height)
