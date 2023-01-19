@@ -41,6 +41,6 @@ class Base:
         if list_objs is None:
             list_objs = []
         list_dictionaries = [obj.to_dictionary() for obj in list_objs]
-        json_string = json.dumps(list_dictionaries)
+        json_string = cls.to_json_string(list_dictionaries)
         with open(filename, 'w') as f:
             f.write(json_string)
