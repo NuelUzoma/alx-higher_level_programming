@@ -66,6 +66,14 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
+    def to_dictionary(self):
+         """The method that returns the dict representation of a Rectangle"""
+         self.__x = x
+         self.__y = y
+         self.id = id
+         self.__height = height
+         self.__width = width
+
     def __str__(self):
         """The method to print a string"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format\

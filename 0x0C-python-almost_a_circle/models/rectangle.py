@@ -68,8 +68,18 @@ class Rectangle(Base):
 
     def __str__(self):
         """The method to print a string"""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format\
-            (self.id, self.__x, self.__y, self.__width, self.__height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height)
+
+    def to_dictionary(self):
+        """The method to convert to dictionary"""
+        return {
+            'x': self.__x,
+            'y': self.__y,
+            'id': self.id,
+            'height': self.__height,
+            'width': self.__width
+            }
 
     @property
     def width(self):
