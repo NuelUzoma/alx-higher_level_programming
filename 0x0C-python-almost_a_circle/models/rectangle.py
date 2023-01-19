@@ -75,10 +75,10 @@ class Rectangle(Base):
         """The method to convert to dictionary"""
         return {
             'x': self.__x,
-            'y': self.__y,
+            'width': self.__width,
             'id': self.id,
             'height': self.__height,
-            'width': self.__width
+            'y': self.__y
             }
 
     @property

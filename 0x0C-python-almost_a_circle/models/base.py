@@ -9,6 +9,7 @@
         otherwise, increment __nb_objects and assign
         the new value to the public instance attribute id"""
 
+
 import json
 
 
@@ -27,7 +28,7 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """Returns the JSON string representation of list_dictionaries"""
-        if list_dictionaries is None or len(list_dictionaries) == 0:
+        if (list_dictionaries is None) or (len(list_dictionaries) == 0):
             return "[]"
         else:
-            json.dumps(list_dictionaries)
+            return json.dumps(list_dictionaries)
