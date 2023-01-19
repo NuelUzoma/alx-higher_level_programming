@@ -1,22 +1,23 @@
 #!/usr/bin/python3
-"""Write the class Rectangle that inherits from Base:
-        In the file models/rectangle.py
-        Class Rectangle inherits from Base
-        Private instance attributes, each with its own
-        public getter and setter:
-        __width -> width
-        __height -> height
-        __x -> x
-        __y -> y
-        Class constructor:
-        def __init__(self, width, height, x=0, y=0, id=None):
-        Call the super class with id - this super call
-        with use the logic of the __init__ of the Base class
-        Assign each argument width, height, x and y to the right attribute"""
+"""Write the class Square that inherits from Rectangle:\
+        In the file models/square.py
+        Class Square inherits from Rectangle
+        Class constructor: def __init__(self, size, x=0, y=0, id=None)::
+        Call the super class with id, x, y, width and height -
+        this super call will use the logic of the __init__ of the
+        Rectangle class. The width and
+        height must be assigned to the value of size
+        You must not create new attributes for this class,
+        use all attributes of Rectangle - As reminder:
+        a Square is a Rectangle with the same width and height
+        All width, height, x and y validation must inherit from Rectangle
+        - same behavior in case of wrong data
+        The overloading __str__ method should return-
+        [Square] (<id>) <x>/<y> - <size> - in our case, width or height"""
 
 
 class Base:
-    """The parent class"""
+    """The main parent class"""
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -29,9 +30,9 @@ class Base:
 
 
 class Rectangle(Base):
-    """The first child class from Base"""
+    """The first child clas from Base"""
     def __init__(self, width, height, x=0, y=0, id=None):
-        """The initialization of the rectangle class"""
+        """The initialization"""
         super().__init__(id)
         self.__width = width
         self.__height = height
@@ -52,16 +53,15 @@ class Rectangle(Base):
     def update(self, *args, **kwargs):
         """The method for assigning an argument to each attribute"""
         if len(args) > 0:
-            if len(args) >= 1:
-                self.id = args[0]
-            if len(args) >= 2:
-                self.__width = args[1]
-            if len(args) >= 3:
-                self.__height = args[2]
-            if len(args) >= 4:
-                self.__x = args[3]
-            if len(args) >= 5:
-                self.__y = args[4]
+            self.id = args[0]
+        elif len(args) > 1:
+            self.__width = args[1]
+        elif len(args) > 2:
+            self.__height = args[2]
+        elif len(args) > 3:
+            self.__x = args[3]
+        elif len(args) > 4:
+            self.__y = args[4]
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
@@ -69,7 +69,7 @@ class Rectangle(Base):
     def __str__(self):
         """The method to print a string"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format\
-            (self.id, self.__x, self.__y, self.__width, self.__height)
+                (self.id, self,__x, self,__y, self,__width, self.__height)
 
     @property
     def width(self):
@@ -126,3 +126,25 @@ class Rectangle(Base):
             raise TypeError("y must be an integer")
         elif (value < 0):
             raise ValueError("y must be >= 0")
+
+
+class Square(Rectangle):
+    """The class Square that inherits from its parent class"""
+    def __init__(self, size, x=0, y=0, id=None):
+        """The initialization of the components"""
+        super().__init__(size, size, x, y, id)
+
+    def __str__(self):
+        """The method to print a string"""
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+
+    @property
+    def size(self):
+        """The getter for size"""
+        return self.__width
+
+    @size.setter
+    def size(self, value):
+        """The setter for size"""
+        self.__width = value
+        self.__height = value
