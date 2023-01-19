@@ -141,10 +141,10 @@ class Square(Rectangle):
     @property
     def size(self):
         """The getter for size"""
-        return self.__width
+        return self.width
 
     @size.setter
     def size(self, value):
         """The setter for size"""
-        self.__width = value
-        self.__height = value
+        self.width = value
+        self.height = value
