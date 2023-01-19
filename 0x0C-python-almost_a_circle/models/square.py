@@ -66,15 +66,6 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
-    def to_dictionary(self):
-        """The method that returns the dict representation of a Rectangle"""
-        return {
-            'id': self.id,
-            'x': self.x,
-            'size': self.size,
-            'y': self.y
-            }
-
     def __str__(self):
         """The method to print a string"""
         return "[Rectangle] ({}) {}/{} - {}/{}".format(
@@ -162,6 +153,15 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """The method that returns the dict representation of a Rectangle"""
+        return {
+            'id': self.id,
+            'x': self.x,
+            'size': self.size,
+            'y': self.y
+            }
 
     @property
     def size(self):
