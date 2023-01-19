@@ -11,6 +11,7 @@
 
 
 import json
+from models import Rectangle, Square
 
 
 class Base:
@@ -32,3 +33,14 @@ class Base:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """A class method"""
+        filename = cls.__name__ + ".json"
+        if list_objs is None:
+            list_objs = []
+        list_dictionaries = [obj.to_dictionary() for obj in list_objs]
+        json_string = json.dumps(list_dictionaries)
+        with open(filename, 'w') as f:
+            f.write(json_string)

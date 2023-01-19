@@ -15,6 +15,9 @@
         Assign each argument width, height, x and y to the right attribute"""
 
 
+import json
+
+
 class Base:
     """The parent class"""
     __nb_objects = 0
@@ -74,12 +77,23 @@ class Rectangle(Base):
     def to_dictionary(self):
         """The method to convert to dictionary"""
         return {
+            'y': self.__y,
             'x': self.__x,
-            'width': self.__width,
             'id': self.id,
-            'height': self.__height,
-            'y': self.__y
+            'width': self.__width,
+            'height': self.__height
             }
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """The class method"""
+        filename = cls.__name__ + ".json"
+        if list_objs is None:
+            list_objs = []
+        list_dictionaries = [obj.to_dictionary() for obj in list_objs]
+        json_string = json.dumps(list_dictionaries)
+        with open(filename, 'w') as f:
+            f.write(json_string)
 
     @property
     def width(self):
