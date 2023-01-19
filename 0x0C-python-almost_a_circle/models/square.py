@@ -67,17 +67,18 @@ class Rectangle(Base):
                 setattr(self, key, value)
 
     def to_dictionary(self):
-         """The method that returns the dict representation of a Rectangle"""
-         self.__x = x
-         self.__y = y
-         self.id = id
-         self.__height = height
-         self.__width = width
+        """The method that returns the dict representation of a Rectangle"""
+        return {
+            'id': self.id,
+            'x': self.x,
+            'size': self.size,
+            'y': self.y
+            }
 
     def __str__(self):
         """The method to print a string"""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format\
-                (self.id, self,__x, self,__y, self,__width, self.__height)
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.__x, self.__y, self.__width, self.__height)
 
     @property
     def width(self):
@@ -144,7 +145,8 @@ class Square(Rectangle):
 
     def __str__(self):
         """The method to print a string"""
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
+        return "[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.width)
 
     def update(self, *args, **kwargs):
         """The method to print arguments"""
