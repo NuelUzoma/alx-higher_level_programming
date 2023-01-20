@@ -79,9 +79,9 @@ class Rectangle(Base):
         return {
             'y': self.__y,
             'x': self.__x,
-            'id': self.id,
+            'height': self.__height,
             'width': self.__width,
-            'height': self.__height
+            'id': self.id
             }
 
     @staticmethod
@@ -91,6 +91,14 @@ class Rectangle(Base):
             return "[]"
         else:
             return json.dumps(list_dictionaries)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """A method that returns the list of the JSON string representation"""
+        if (json_string is None) or (len(json_string) == 0):
+            return "[]"
+        else:
+            return json.loads(json_string)
 
     @classmethod
     def save_to_file(cls, list_objs):
