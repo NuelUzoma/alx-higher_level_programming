@@ -9,11 +9,11 @@ Results must be sorted in ascending order by states.id
 Results must be displayed as they are in the example below
 Your code should not be executed when imported"""
 
-from MySQLdb import _mysql
+import MySQLdb
 
 
-db = _mysql.connect(user="root", password="EmmanueL_@20",
-                    database="hbtn_0e_0_usa")
-db.query("""SELECT * FROM states ORDER BY states.id ASC""")
-r = db.store_result()
-r.fetch_row(5)
+db = MySQLdb.connect(user="root", password="EmmanueL_@20",
+                     database="hbtn_0e_0_usa")
+c = db.cursor()
+c.execute("""SELECT * FROM states ORDER BY states.id ASC""")
+c.fetchall()
