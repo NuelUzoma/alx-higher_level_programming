@@ -26,5 +26,6 @@ c.fetchall()
 
 for row in c:
     print(row)
+db.commit()
 c.close()
 db.close()
