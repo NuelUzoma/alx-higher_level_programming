@@ -13,27 +13,30 @@ import sys
 
 
 def filter_states():
-    """The filter property to filter the output and query using the MySQLdb"""
+    """The filter property to filter the output using MySQLdb"""
 
     USER = sys.argv[1]
     PASSWD = sys.argv[2]
     DATABASE = sys.argv[3]
 
-    db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
-                         port=3306, database=DATABASE)
-    """connect() establishes a connection with the UNIX socket"""
-    c = db.cursor()
-    """cursor() creates a cursor object"""
-    c.execute("""SELECT * FROM states WHERE name REGEXP '^[N]'
-                ORDER BY states.id ASC""")
-    """execute() executes the query"""
-    c.fetchall()
-    """fetchall() fetches all the data to be iterated"""
-    for row in c:
-        print(row)
-    db.commit()
-    c.close()
-    db.close()
+    try:
+        db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
+                             port=3306, database=DATABASE)
+        """connect() establishes a connection with the UNIX socket"""
+        c = db.cursor()
+        """cursor() creates a cursor object"""
+        c.execute("""SELECT * FROM states WHERE name REGEXP '^[N]'
+                    ORDER BY states.id ASC""")
+        """execute() executes the query"""
+        c.fetchall()
+        """fetchall() fetches all the data to be iterated"""
+        for row in c:
+            print(row)
+        db.commit()
+        c.close()
+        db.close()
+    except Exception as e:
+        return (e)
 
 
 if __name__ == "__main__":
