@@ -13,8 +13,16 @@ import MySQLdb
 
 db = MySQLdb.connect(user="root", password="EmmanueL_@20",
                      database="hbtn_0e_0_usa")
+"""The connect function establehes a connection with the UNIX socket"""
+
 c = db.cursor()
+"""The cursor function creates a cursor object using cursor()"""
+
 c.execute("""SELECT * FROM states ORDER BY states.id ASC""")
+"""The execute function executes the SQL Query using exeute()"""
+
 c.fetchall()
+"""The fetchall() fetches all the rows and columns in the table"""
+
 for row in c:
     print(row)
