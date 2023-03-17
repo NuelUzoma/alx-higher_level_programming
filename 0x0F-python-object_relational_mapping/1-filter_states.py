@@ -30,6 +30,7 @@ def filter_states() -> None:
     """fetchall() fetches all the data to be iterated"""
     for row in c:
         print(row)
+    db.commit()
     c.close()
     db.close()
 

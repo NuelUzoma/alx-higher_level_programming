@@ -8,15 +8,16 @@
         running on localhost at port 3306
         Results must be sorted in ascending order by states.id"""
 
+
 import MySQLdb
 import sys
+
 
 [USER, PASSWD, DATABASE] = sys.argv[1:4]
 
 
-def select_states():
-    """The SQL Python Script to query all states
-        using the MySQLdb Module"""
+def select_states() -> None:
+    """The SQL Python Script to query all states"""
 
     try:
         db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
