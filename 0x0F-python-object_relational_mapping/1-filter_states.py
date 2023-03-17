@@ -12,11 +12,12 @@ import MySQLdb
 import sys
 
 
-[USER, PASSWD, DATABASE] = sys.argv[1:4]
-
-
-def filter_states() -> None:
+def filter_states():
     """The filter property to filter the output and query using the MySQLdb"""
+
+    USER = sys.argv[1]
+    PASSWD = sys.argv[2]
+    DATABASE = sys.argv[3]
 
     db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
                          port=3306, database=DATABASE)

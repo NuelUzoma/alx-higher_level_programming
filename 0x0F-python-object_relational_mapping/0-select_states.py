@@ -13,11 +13,12 @@ import MySQLdb
 import sys
 
 
-[USER, PASSWD, DATABASE] = sys.argv[1:4]
-
-
-def select_states() -> None:
+def select_states():
     """The SQL Python Script to query all states"""
+
+    USER = sys.argv[1]
+    PASSWD = sys.argv[2]
+    DATABASE = sys.argv[3]
 
     try:
         db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
