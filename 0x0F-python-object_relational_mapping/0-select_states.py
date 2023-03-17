@@ -11,8 +11,9 @@ Your code should not be executed when imported"""
 
 from MySQLdb import _mysql
 
+
 db = _mysql.connect(user="root", password="EmmanueL_@20",
                     database="hbtn_0e_0_usa")
 db.query("""SELECT * FROM states ORDER BY states.id ASC""")
 r = db.store_result()
-r.fetch_row(6)
+r.fetch_row(5)
