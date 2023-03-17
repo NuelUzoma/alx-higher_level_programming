@@ -17,3 +17,5 @@ db = MySQLdb.connect(user="root", password="EmmanueL_@20",
 c = db.cursor()
 c.execute("""SELECT * FROM states ORDER BY states.id ASC""")
 c.fetchall()
+for row in c:
+    print(row)
