@@ -26,3 +26,5 @@ c.fetchall()
 
 for row in c:
     print(row)
+c.close()
+db.close()
