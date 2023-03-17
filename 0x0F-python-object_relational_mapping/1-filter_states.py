@@ -9,14 +9,18 @@
 
 
 import MySQLdb
+import sys
 
 
-def filter_states():
-    """The filter property to filter the output"""
+[USER, PASSWD, DATABASE] = sys.argv[1:4]
 
-    db = MySQLdb.connect(user="root", password="EmmanueL_@20",
-                         database="hbtn_0e_0_usa")
-    """connect establishes a connection with the UNIX socket"""
+
+def filter_states() -> None:
+    """The filter property to filter the output and query using the MySQLdb"""
+
+    db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
+                         port=3306, database=DATABASE)
+    """connect() establishes a connection with the UNIX socket"""
     c = db.cursor()
     """cursor() creates a cursor object"""
     c.execute("""SELECT * FROM states WHERE name REGEXP '^[N]'
@@ -26,7 +30,6 @@ def filter_states():
     """fetchall() fetches all the data to be iterated"""
     for row in c:
         print(row)
-    db.commit()
     c.close()
     db.close()
 
