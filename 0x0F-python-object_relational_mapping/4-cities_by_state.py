@@ -24,9 +24,7 @@ def cities_by_states():
         db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
                              port=3306, database=DATABASE)
         c = db.cursor()
-        c.execute("""SELECT cities.id, cities.name, states.name FROM cities
-                    JOIN states ON cities.state_id = states.id
-                    ORDER BY cities.id ASC""")
+        c.execute("""SELECT * FROM cities ORDER BY cities.id ASC""")
         c.fetchall()
         for row in c:
             print(row)
