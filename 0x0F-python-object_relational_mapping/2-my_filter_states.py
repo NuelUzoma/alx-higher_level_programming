@@ -29,7 +29,7 @@ def my_filter_states():
         db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
                              port=3306, database=DATABASE)
         c = db.cursor()
-        c.execute("""SELECT * FROM states WHERE name = %s
+        c.execute("""SELECT * FROM states WHERE name='%s'
                     ORDER BY states.id ASC""".format(STATE_NAME))
         c.fetchall()
         for row in c:
