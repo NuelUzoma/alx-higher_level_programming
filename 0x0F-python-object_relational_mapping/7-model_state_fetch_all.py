@@ -16,7 +16,7 @@ if __name__ == "__main__":
     from sqlalchemy.orm import sessionmaker
     from sqlalchemy import create_engine
     import sys
-    
+
     USR = sys.argv[1]
     PWD = sys.argv[2]
     DB = sys.argv[3]
