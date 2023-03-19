@@ -28,9 +28,9 @@ def filter_states():
         c.execute("""SELECT * FROM states WHERE name REGEXP '^[N]'
                     ORDER BY states.id ASC""")
         """execute() executes the query"""
-        c.fetchall()
+        rows = c.fetchall()
         """fetchall() fetches all the data to be iterated"""
-        for row in c:
+        for row in rows:
             print(row)
         db.commit()
         c.close()

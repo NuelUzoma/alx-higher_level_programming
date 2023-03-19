@@ -27,9 +27,15 @@ Base = declarative_base()
 class State(Base):
     """State Class that inherits from base linking to the states table"""
     __tablename__ = 'states'
+
     id = Column(Integer, primary_key=True,
                 autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
+
+    def __init__(self, id, name):
+        """The initialization of the State class using SQLAlchemy"""
+        self.id = id
+        self.name = name
 
 
 Base.metadata.create_all(engine)

@@ -27,8 +27,8 @@ def cities_by_states():
         c.execute("""SELECT cities.id, cities.name, states.name FROM cities
                     LEFT JOIN states ON cities.state_id = states.id
                     ORDER BY cities.id ASC""")
-        c.fetchall()
-        for row in c:
+        rows = c.fetchall()
+        for row in rows:
             print(row)
         db.commit()
         c.close()

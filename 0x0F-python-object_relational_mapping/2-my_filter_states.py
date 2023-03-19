@@ -31,8 +31,8 @@ def my_filter_states():
         c = db.cursor()
         c.execute("""SELECT * FROM states WHERE name='%s'
                     ORDER BY states.id ASC""".format(STATE_NAME))
-        c.fetchall()
-        for row in c:
+        rows = c.fetchall()
+        for row in rows:
             print(row)
         db.commit()
         c.close()

@@ -24,8 +24,8 @@ def my_safe_filter_states():
         c = db.cursor()
         c.execute("""SELECT * FROM states WHERE name='%s' OR '1'='1' --
                     ORDER BY states.id ASC""".format(STATE_NAME))
-        c.fetchall()
-        for row in c:
+        rows = c.fetchall()
+        for row in rows:
             print(row)
         db.commit()
         c.close()
