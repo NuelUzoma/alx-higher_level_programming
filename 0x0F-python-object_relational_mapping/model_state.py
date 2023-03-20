@@ -13,31 +13,30 @@ before calling Base.metadata.create_all(engine)
 """
 
 
-from sqlalchemy import create_engine
-from sqlalchemy import Column, String, Integer
-from sqlalchemy.ext.declarative import declarative_base
-import sys
+if __name__ == "__main__":
+    from sqlalchemy import create_engine
+    from sqlalchemy import Column, String, Integer
+    from sqlalchemy.ext.declarative import declarative_base
+    import sys
 
-USR = sys.argv[1]
-PWD = sys.argv[2]
-DB = sys.argv[3]
-engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                       .format(USR, PWD, DB), pool_pre_ping=True)
-Base = declarative_base()
+    USR = sys.argv[1]
+    PWD = sys.argv[2]
+    DB = sys.argv[3]
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(USR, PWD, DB), pool_pre_ping=True)
+    Base = declarative_base()
 
+    class State(Base):
+        """State Class that inherits from base linking to the states table"""
+        __tablename__ = 'states'
 
-class State(Base):
-    """State Class that inherits from base linking to the states table"""
-    __tablename__ = 'states'
+        id = Column(Integer, primary_key=True,
+                    autoincrement=True, nullable=False)
+        name = Column(String(128), nullable=False)
 
-    id = Column(Integer, primary_key=True,
-                autoincrement=True, nullable=False)
-    name = Column(String(128), nullable=False)
+        def __init__(self, id, name):
+            """The initialization of the State class using SQLAlchemy"""
+            self.id = id
+            self.name = name
 
-    def __init__(self, id, name):
-        """The initialization of the State class using SQLAlchemy"""
-        self.id = id
-        self.name = name
-
-
-Base.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
