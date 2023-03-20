@@ -20,13 +20,11 @@ if __name__ == "__main__":
     PWD = sys.argv[2]
     DB = sys.argv[3]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                           .format(USR, PWD, DB), echo=True)
-    engine.connect()
-    Base.metadata.create_all(engine)
+                           .format(USR, PWD, DB), pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    lists = session.query(State).filter(State.name.like('%a%')
-                                        ).order_by(State.id)
+    lists = session.query(State).filter(State.name.like("%a%")
+                                        ).order_by(State.id).all()
     for list in lists:
         print("{}: {}".format(list.id, list.name))
     session.commit()
