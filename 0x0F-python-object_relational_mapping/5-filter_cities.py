@@ -27,12 +27,22 @@ def filter_cities():
         db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
                              port=3306, database=DATABASE)
         c = db.cursor()
-        c.execute("""SELECT cities.name FROM cities JOIN states
-                    ON cities.state_id = states.id WHERE cities.name='%s'
-                    ORDER BY cities.id ASC""".format(STATE_NAME))
+        c.execute("""SELECT name FROM cities
+                    WHERE state_id= (
+                        SELECT id
+                        FROM states
+                        WHERE name = %s
+                        )
+                        """, (STATE_NAME, ))
         cities = c.fetchall()
-        city_names = [city[0]for city in cities]
-        print(', '.join[city_names])
+        my_string = ""
+        for i in range(len(cities)):
+            (city,) = cities[i]
+            if i != len(cities) - 1:
+                my_string = my_string + "{}, ".format(city)
+            else:
+                my_string = my_string + city
+        print(my_string)
         db.commit()
         c.close()
         db.close()
