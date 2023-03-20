@@ -34,6 +34,7 @@ def my_filter_states():
         rows = c.fetchall()
         for row in rows:
             print(row)
+        db.commit()
         c.close()
         db.close()
     except Exception as e:

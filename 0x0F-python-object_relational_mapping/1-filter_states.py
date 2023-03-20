@@ -32,6 +32,7 @@ def filter_states():
         """fetchall() fetches all the data to be iterated"""
         for row in rows:
             print(row)
+        db.commit()
         c.close()
         db.close()
     except Exception as e:

@@ -13,16 +13,16 @@ import sys
 def my_safe_filter_states():
     """A python function using MySQLdb to test for SQL Injections"""
 
-    USER = sys.argv[1]
-    PASSWD = sys.argv[2]
-    DATABASE = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
     STATE_NAME = sys.argv[4]
 
     try:
-        db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
-                             port=3306, database=DATABASE)
+        db = MySQLdb.connect(host="localhost", user=username,
+                             password=password, port=3306, database=database)
         c = db.cursor()
-        c.execute("""SELECT * FROM states WHERE name='%s' OR '1'='1' --
+        c.execute("""SELECT * FROM states WHERE name='{}' OR '1'='1' --
                     ORDER BY states.id ASC""".format(STATE_NAME))
         rows = c.fetchall()
         for row in rows:

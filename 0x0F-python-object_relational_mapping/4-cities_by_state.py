@@ -16,16 +16,16 @@ import sys
 def cities_by_states():
     """A Python Function using the MySQLdb Module to list cities by states"""
 
-    USER = sys.argv[1]
-    PASSWD = sys.argv[2]
-    DATABASE = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
     try:
-        db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
-                             port=3306, database=DATABASE)
+        db = MySQLdb.connect(host="localhost", user=username,
+                             password=password, port=3306, database=database)
         c = db.cursor()
         c.execute("""SELECT cities.id, cities.name, states.name FROM cities
-                    LEFT JOIN states ON cities.state_id = states.id
+                    JOIN states ON cities.state_id = states.id
                     ORDER BY cities.id ASC""")
         rows = c.fetchall()
         for row in rows:
