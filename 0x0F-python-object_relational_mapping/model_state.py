@@ -27,7 +27,11 @@ if __name__ == "__main__":
     Base = declarative_base()
 
     class State(Base):
-        """State Class that inherits from base linking to the states table"""
+        """State Class that inherits from base linking to the states table
+        class attribute id that represents a column of an auto-generated,
+        unique integer, can't be null and is a primary key
+        class attribute name that represents a column of a string
+        with maximum 128 characters and can't be null"""
         __tablename__ = 'states'
 
         id = Column(Integer, primary_key=True,
