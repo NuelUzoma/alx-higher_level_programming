@@ -15,24 +15,23 @@ import sys
 def filter_states():
     """The filter property to filter the output using MySQLdb"""
 
-    USER = sys.argv[1]
-    PASSWD = sys.argv[2]
-    DATABASE = sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
     try:
-        db = MySQLdb.connect(host="localhost", user=USER, password=PASSWD,
-                             port=3306, database=DATABASE)
+        db = MySQLdb.connect(host="localhost", user=username,
+                             password=password, port=3306, database=database)
         """connect() establishes a connection with the UNIX socket"""
         c = db.cursor()
         """cursor() creates a cursor object"""
-        c.execute("""SELECT * FROM states WHERE name REGEXP '^[N]'
+        c.execute("""SELECT * FROM states WHERE name LIKE "N%"
                     ORDER BY states.id ASC""")
         """execute() executes the query"""
         rows = c.fetchall()
         """fetchall() fetches all the data to be iterated"""
         for row in rows:
             print(row)
-        db.commit()
         c.close()
         db.close()
     except Exception as e:
