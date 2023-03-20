@@ -8,6 +8,8 @@ class attribute id that represents a column of an auto-generated,
 unique integer, cannot be null and is a primary key
 class attribute name that represents a column of a string
 with maximum 128 characters and cannot be null
+WARNING: all classes who inherit from Base must be imported
+before calling Base.metadata.create_all(engine)
 """
 
 
@@ -20,7 +22,7 @@ USR = sys.argv[1]
 PWD = sys.argv[2]
 DB = sys.argv[3]
 engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
-                       .format(USR, PWD, DB))
+                       .format(USR, PWD, DB), pool_pre_ping=True)
 Base = declarative_base()
 
 
