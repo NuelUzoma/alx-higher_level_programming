@@ -32,7 +32,7 @@ def filter_cities():
                         SELECT id
                         FROM states
                         WHERE name = %s
-                        )
+                        ) ORDER BY cities.id ASC
                         """, (STATE_NAME, ))
         cities = c.fetchall()
         my_string = ""
