@@ -20,15 +20,16 @@ if __name__ == "__main__":
     USR = sys.argv[1]
     PWD = sys.argv[2]
     DB = sys.argv[3]
+    STATE_NAME = sys.argv[4]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(USR, PWD, DB), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    list_state = session.query(State).filter(State.name == sys.argv[4]
+    list_state = session.query(State).filter(State.name == STATE_NAME
                                              ).order_by(State.id).all()
     if len(list_state) == 0:
         print("Not found")
     else:
         print("{}".format(list_state[0].id))
-    session.commit()
     session.close()
