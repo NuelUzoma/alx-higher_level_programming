@@ -12,6 +12,6 @@ request(URL, function (error, response, body) {
     });
     console.log(movies.length);
   } else {
-    console.log(error);
+    console.error(error);
   }
 });
