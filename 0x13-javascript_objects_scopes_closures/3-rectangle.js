@@ -8,8 +8,8 @@ class Rectangle {
     this.width = w;
     this.height = h;
   }
-  
-  print() {
+
+  print () {
     return ('X' * this.width) * this.height;
   }
 }
